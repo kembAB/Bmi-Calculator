@@ -8,6 +8,7 @@ namespace AssignmentThree
 {
     class validator
     {
+        //
     //    public static decimal ReadCurrencyConsole()
     //    {
     //        decimal cuinput;

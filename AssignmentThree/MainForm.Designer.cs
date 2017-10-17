@@ -30,6 +30,7 @@ namespace AssignmentThree
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.FuelGroup = new System.Windows.Forms.GroupBox();
             this.txtPreviousReading = new System.Windows.Forms.TextBox();
             this.txtCurrentFuelTanked = new System.Windows.Forms.TextBox();
@@ -55,13 +56,15 @@ namespace AssignmentThree
             this.label8 = new System.Windows.Forms.Label();
             this.gbFuel = new System.ComponentModel.BackgroundWorker();
             this.BMIGroup = new System.Windows.Forms.GroupBox();
+            this.radUsUnit = new System.Windows.Forms.RadioButton();
+            this.radMetric = new System.Windows.Forms.RadioButton();
             this.txtWeight = new System.Windows.Forms.TextBox();
-            this.txtHeight = new System.Windows.Forms.TextBox();
             this.txtYourName = new System.Windows.Forms.TextBox();
+            this.txtHeight = new System.Windows.Forms.TextBox();
             this.lblweight = new System.Windows.Forms.Label();
-            this.lblHeight = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnCalculateBMI = new System.Windows.Forms.Button();
+            this.lblHeight = new System.Windows.Forms.Label();
             this.BMIResultsGroup = new System.Windows.Forms.GroupBox();
             this.lblWeightCatagory = new System.Windows.Forms.Label();
             this.lblYourBMI = new System.Windows.Forms.Label();
@@ -69,8 +72,7 @@ namespace AssignmentThree
             this.lblBMIDisplay = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.radUsUnit = new System.Windows.Forms.RadioButton();
-            this.radMetric = new System.Windows.Forms.RadioButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.FuelGroup.SuspendLayout();
             this.ResultsGroup.SuspendLayout();
             this.BMIGroup.SuspendLayout();
@@ -96,7 +98,6 @@ namespace AssignmentThree
             this.FuelGroup.TabIndex = 0;
             this.FuelGroup.TabStop = false;
             this.FuelGroup.Text = "Fuel";
-            //this.FuelGroup.Enter += new System.EventHandler(this.FuelGroup_Enter);
             // 
             // txtPreviousReading
             // 
@@ -198,7 +199,6 @@ namespace AssignmentThree
             this.ResultsGroup.TabIndex = 10;
             this.ResultsGroup.TabStop = false;
             this.ResultsGroup.Text = "Results";
-           // this.ResultsGroup.Enter += new System.EventHandler(this.ResultsGroup_Enter);
             // 
             // lblkmperliter
             // 
@@ -290,7 +290,6 @@ namespace AssignmentThree
             this.lblLitKm.TabIndex = 10;
             this.lblLitKm.Text = "adadad";
             this.lblLitKm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //this.lblLitKm.Click += new System.EventHandler(this.lblLitKm_Click);
             // 
             // label5
             // 
@@ -356,6 +355,30 @@ namespace AssignmentThree
             this.BMIGroup.TabStop = false;
             this.BMIGroup.Text = "BMI";
             // 
+            // radUsUnit
+            // 
+            this.radUsUnit.AutoSize = true;
+            this.radUsUnit.Location = new System.Drawing.Point(224, 77);
+            this.radUsUnit.Name = "radUsUnit";
+            this.radUsUnit.Size = new System.Drawing.Size(99, 17);
+            this.radUsUnit.TabIndex = 19;
+            this.radUsUnit.Text = "US Unit(lb,inch)";
+            this.radUsUnit.UseVisualStyleBackColor = true;
+            this.radUsUnit.CheckedChanged += new System.EventHandler(this.radUsUnit_CheckedChanged);
+            // 
+            // radMetric
+            // 
+            this.radMetric.AutoSize = true;
+            this.radMetric.Checked = true;
+            this.radMetric.Location = new System.Drawing.Point(224, 53);
+            this.radMetric.Name = "radMetric";
+            this.radMetric.Size = new System.Drawing.Size(114, 17);
+            this.radMetric.TabIndex = 18;
+            this.radMetric.TabStop = true;
+            this.radMetric.Text = "Metric Unit (kg,cm)";
+            this.radMetric.UseVisualStyleBackColor = true;
+            this.radMetric.CheckedChanged += new System.EventHandler(this.radMetric_CheckedChanged);
+            // 
             // txtWeight
             // 
             this.txtWeight.Location = new System.Drawing.Point(96, 77);
@@ -363,20 +386,19 @@ namespace AssignmentThree
             this.txtWeight.Size = new System.Drawing.Size(100, 20);
             this.txtWeight.TabIndex = 26;
             // 
-            // txtHeight
-            // 
-            this.txtHeight.Location = new System.Drawing.Point(96, 53);
-            this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new System.Drawing.Size(100, 20);
-            this.txtHeight.TabIndex = 25;
-            //this.txtHeight.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // txtYourName
             // 
             this.txtYourName.Location = new System.Drawing.Point(93, 22);
             this.txtYourName.Name = "txtYourName";
             this.txtYourName.Size = new System.Drawing.Size(277, 20);
             this.txtYourName.TabIndex = 24;
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.Location = new System.Drawing.Point(96, 53);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(100, 20);
+            this.txtHeight.TabIndex = 25;
             // 
             // lblweight
             // 
@@ -386,16 +408,6 @@ namespace AssignmentThree
             this.lblweight.Size = new System.Drawing.Size(59, 13);
             this.lblweight.TabIndex = 17;
             this.lblweight.Text = "Weight(kg)";
-            //this.lblweight.Click += new System.EventHandler(this.lblweight_Click);
-            // 
-            // lblHeight
-            // 
-            this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(22, 56);
-            this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(58, 13);
-            this.lblHeight.TabIndex = 12;
-            this.lblHeight.Text = "Height(cm)";
             // 
             // label19
             // 
@@ -417,6 +429,15 @@ namespace AssignmentThree
             this.btnCalculateBMI.Text = "Calculate";
             this.btnCalculateBMI.UseVisualStyleBackColor = true;
             this.btnCalculateBMI.Click += new System.EventHandler(this.btnCalculateBMI_Click);
+            // 
+            // lblHeight
+            // 
+            this.lblHeight.AutoSize = true;
+            this.lblHeight.Location = new System.Drawing.Point(22, 56);
+            this.lblHeight.Name = "lblHeight";
+            this.lblHeight.Size = new System.Drawing.Size(58, 13);
+            this.lblHeight.TabIndex = 12;
+            this.lblHeight.Text = "Height(cm)";
             // 
             // BMIResultsGroup
             // 
@@ -460,7 +481,6 @@ namespace AssignmentThree
             this.lblBMIDescription.Size = new System.Drawing.Size(201, 13);
             this.lblBMIDescription.TabIndex = 16;
             this.lblBMIDescription.Text = "NORMAL BMI is between  18.5 and 24.9";
-           // this.lblBMIDescription.Click += new System.EventHandler(this.lblBMIDescription_Click);
             // 
             // lblBMIDisplay
             // 
@@ -489,30 +509,6 @@ namespace AssignmentThree
             this.label17.Size = new System.Drawing.Size(86, 13);
             this.label17.TabIndex = 13;
             this.label17.Text = "Weight Catagory";
-            // 
-            // radUsUnit
-            // 
-            this.radUsUnit.AutoSize = true;
-            this.radUsUnit.Location = new System.Drawing.Point(224, 77);
-            this.radUsUnit.Name = "radUsUnit";
-            this.radUsUnit.Size = new System.Drawing.Size(99, 17);
-            this.radUsUnit.TabIndex = 19;
-            this.radUsUnit.Text = "US Unit(lb,inch)";
-            this.radUsUnit.UseVisualStyleBackColor = true;
-            this.radUsUnit.CheckedChanged += new System.EventHandler(this.radUsUnit_CheckedChanged);
-            // 
-            // radMetric
-            // 
-            this.radMetric.AutoSize = true;
-            this.radMetric.Checked = true;
-            this.radMetric.Location = new System.Drawing.Point(224, 53);
-            this.radMetric.Name = "radMetric";
-            this.radMetric.Size = new System.Drawing.Size(114, 17);
-            this.radMetric.TabIndex = 18;
-            this.radMetric.TabStop = true;
-            this.radMetric.Text = "Metric Unit (kg,cm)";
-            this.radMetric.UseVisualStyleBackColor = true;
-            this.radMetric.CheckedChanged += new System.EventHandler(this.radMetric_CheckedChanged);
             // 
             // MainForm
             // 
@@ -581,6 +577,7 @@ namespace AssignmentThree
         private Label lblYourBMI;
         private RadioButton radUsUnit;
         private RadioButton radMetric;
+        private Timer timer1;
     }
 }
 
